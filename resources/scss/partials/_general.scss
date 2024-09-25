@@ -1,0 +1,60 @@
+header,
+aside{
+
+    a{
+        text-decoration:none;
+
+        &:hover{
+            text-decoration:underline;
+        }
+    }
+}
+
+header{
+
+    a{
+        color: white;
+    }
+}
+
+aside{
+
+    a{
+        color: black;
+    }
+}
+
+ul li{
+    list-style-type: none;
+}
+
+.wrapper{
+    height:calc(100vh - 48px);
+    overflow:hidden;
+}
+
+.aside-body{
+    background-color:rgb(219, 219, 219);
+    width: 150px;
+    height: 100%;
+}
+
+aside{
+    ul{
+        padding-left:0;
+    }
+
+    ul li{
+        line-height: 40px;
+    }
+}
+
+.content{
+    overflow:auto;
+    width: calc(100% - 150px);
+}
+
+.border-input{
+    border:none;
+    width: 100%;
+}
