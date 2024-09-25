@@ -12,14 +12,13 @@
         </div>
     @endif
 
-        <table class="table text-center">
+        <table class="table">
         <thead>
             <tr>
                 <th scope="col">#id</th>
                 <th scope="col">Titolo</th>
                 <th scope="col">Tipologia</th>
-                <th scope="col">Inizio</th>
-                <th scope="col">Fine</th>
+                <th scope="col">Tecnologia</th>
                 <th scope="col">Azioni</th>
             </tr>
         </thead>
@@ -33,8 +32,16 @@
                             {{$project->type?->name}}
                         </span>
                     </td>
-                    <td>{{($project->start_date)->format('d/m/Y')}}</td>
-                    <td>{{($project->end_date)->format('d/m/Y')}}</td>
+                    <td>
+                        @forelse ($project->technologies as $technology )
+                            <span class="badge text-bg-success">
+                                {{ $technology->name }}
+                            </span>
+                        @empty
+                            -
+                        @endforelse
+
+                    </td>
                     <td>
                         <a href="{{route('admin.projects.show', $project)}}" class="btn btn-primary">
                             <i class="fa-solid fa-eye"></i>

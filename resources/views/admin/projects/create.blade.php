@@ -61,6 +61,28 @@
                 @enderror
             </div>
 
+            <label for="" class="form-label">Tecnologia usata</label>
+            <div class="mb-3">
+                <div class="btn-group" role="group">
+                    @foreach ($technologies as $technology)
+                        <input
+                        name="technologies[]"
+                        type="checkbox"
+                        class="btn-check"
+                        id="technology-{{$technology->id}}"
+                        autocomplete="off"
+                        value="{{$technology->id}}"
+                        @if (in_array($technology->id, old('technologies', [])))
+                            checked
+                        @endif
+                        >
+                        <label class="btn btn-outline-primary" for="technology-{{$technology->id}}">
+                            {{$technology->name}}
+                        </label>
+                    @endforeach
+                </div>
+            </div>
+
             <div class="mb-3">
                 <label for="start_date" class="form-label">Data di inizio</label>
                 <input type="date" class="form-control @error('start_date') is-invalid @enderror" id="start_date" name="start_date" value="{{old('start_date')}}">

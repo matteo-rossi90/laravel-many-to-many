@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Functions\Helper;
 use App\Http\Requests\ProjectRequest;
+use App\Models\Technology;
 use App\Models\Type;
 
 class ProjectController extends Controller
@@ -28,7 +29,9 @@ class ProjectController extends Controller
     {
         $types = Type::all();
 
-        return view('admin.projects.create', compact('types'));
+        $technologies = Technology::all();
+
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -40,9 +43,16 @@ class ProjectController extends Controller
 
         $data['slug'] = Helper::generateSlug($data['title'], Project::class);
 
-        $new_project = Project::create($data);
+        $project = Project::create($data);
 
-        return redirect()->route('admin.projects.show', $new_project);
+        //verificare se nei data sia presente la chiave technologies necessaria per selezionare le tecnologie nel checkbox
+        if (array_key_exists('technologies', $data)) {
+
+            //se la chiave esiste creare la relazione con attach() tra i progetti e gli id delle tecnologie
+            $project->technologies()->attach($data['technologies']);
+        }
+
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**

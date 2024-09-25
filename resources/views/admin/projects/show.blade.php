@@ -20,6 +20,14 @@
             <span><strong>Azienda/responsabile: </strong></span><span>{{$project->company}}</span>
         </li>
         <li class="list-group-item d-inline">
+            <span><strong>Tecnologie: </strong></span>
+            @forelse ($project->technologies as $technology )
+                <span class="badge text-bg-warning">{{$technology->name}}</span>
+            @empty
+                <span>Nessuna tecnologia</span>
+            @endforelse
+        </li>
+        <li class="list-group-item d-inline">
             <span><strong>Tipologia: </strong></span><span>{{$project->type ? $project->type->name : 'Nessuna'}}</span>
         </li>
         <li class="list-group-item d-inline">
