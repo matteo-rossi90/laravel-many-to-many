@@ -81,6 +81,9 @@
                         </label>
                     @endforeach
                 </div>
+                @error('technologies')
+                    <small class="text-danger">{{$message}}</small>
+                @enderror
             </div>
 
             <div class="mb-3">
