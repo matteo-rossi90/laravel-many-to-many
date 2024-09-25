@@ -22,7 +22,13 @@
             <li>
                 <a href="{{route('admin.types.index')}}">
                     <i class="fa-solid fa-table"></i>
-                    Gestisci
+                    Tipi
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.technologies.index')}}">
+                    <i class="fa-solid fa-gear"></i>
+                    Tecnologie
                 </a>
             </li>
         </ul>

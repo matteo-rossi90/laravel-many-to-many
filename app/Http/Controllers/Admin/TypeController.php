@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Type;
 use App\Functions\Helper;
+use App\Http\Requests\TypeRequest;
 
 class TypeController extends Controller
 {
@@ -30,7 +31,7 @@ class TypeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TypeRequest $request)
     {
 
         //per evitare che si ripetano le stesse tipologie, verificare se esiste già una tipologia
@@ -74,7 +75,7 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Type $type)
+    public function update(TypeRequest $request, Type $type)
     {
         $data = $request->all();
         $data['slug'] = Helper::generateSlug($data['name'], Type::class);
@@ -91,6 +92,6 @@ class TypeController extends Controller
     {
         $type->delete();
 
-        return redirect()->route('admin.types.index')->with('delete', 'La tipologia è stata eliminata correttamente');
+        return redirect()->route('admin.types.index')->with('deleted', 'La tipologia è stata eliminata correttamente');
     }
 }

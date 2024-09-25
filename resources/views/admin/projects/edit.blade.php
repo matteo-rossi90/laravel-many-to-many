@@ -61,7 +61,7 @@
                 @enderror
             </div>
 
-                        <label for="" class="form-label">Tecnologia usata</label>
+            <label for="" class="form-label">Tecnologia usata</label>
             <div class="mb-3">
                 <div class="btn-group" role="group">
                     @foreach ($technologies as $technology)
@@ -106,7 +106,7 @@
                 <textarea type="text" class="form-control" cols="30" rows="5" id="description" name="description" placeholder="Inserisci una descrizione">{{old('description', $project->description)}}</textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Invia</button>
+            <button type="submit" class="btn btn-primary">Salva</button>
             <a href="{{route('admin.projects.index')}}" class="btn btn-warning">Indietro</a>
 
 
