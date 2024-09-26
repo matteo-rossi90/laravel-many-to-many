@@ -66,13 +66,13 @@
                                 </form>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-warning" onclick="submitTypeForm({{$technology->id}})">Aggiorna</button>
+                                <button type="submit" class="btn btn-warning" onclick="submitFormById({{$technology->id}})">Aggiorna</button>
                             </td>
                             <td class="text-end">
                                 <form action="{{route('admin.technologies.destroy', $technology)}}" method="POST" onsubmit="return confirm('Vuoi davvero eliminare questa tecnologia?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Elimina</button>
+
+                                    @include('admin.partials.formdelete')
+
                                 </form>
                             </td>
                         </tr>
@@ -82,16 +82,5 @@
         </div>
     </div>
 </div>
-
-<script>
-    function submitTypeForm(id){
-        const form = document.getElementById(`form-edit-${id}`)
-        form.submit();
-
-    }
-</script>
-
-</div>
-
 
 @endsection

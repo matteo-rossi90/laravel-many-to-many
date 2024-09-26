@@ -77,7 +77,7 @@ class TechnologyController extends Controller
 
         $technology->update($data);
 
-        return redirect()->route('admin.types.index')->with('edited', 'La tecnologia è stata modificata correttamente');
+        return redirect()->route('admin.technologies.index')->with('edited', 'La tecnologia è stata modificata correttamente');
     }
 
     /**

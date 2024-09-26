@@ -15,7 +15,7 @@
 <body>
 
     @include('admin.partials.header')
-    <div class="d-flex wrapper">
+    <div class="d-flex justify-content-center wrapper">
 
         @auth
             @include('admin.partials.aside')
@@ -25,6 +25,6 @@
         </div>
 
     </div>
-
+    <script type="text/javascript" src="{{Vite::asset('resources/js/functions.js') }}"></script>
 </body>
 </html>
