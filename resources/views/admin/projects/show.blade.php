@@ -42,7 +42,7 @@
 
     </ul>
 
-    <img class="image-fluid" src="{{asset('storage/' . $project->img)}}" alt="{{$project->original_name_img}}">
+    <img class="image-thumbnail" src="{{asset('storage/' . $project->img)}}" alt="{{$project->original_name_img}}">
 
     <a href="{{route('admin.projects.index')}}" class="btn btn-primary">Indietro</a>
 

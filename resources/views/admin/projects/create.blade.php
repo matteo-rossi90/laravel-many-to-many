@@ -90,10 +90,13 @@
                 <label for="img" class="form-label">Immagine</label>
                 <input class="form-control"
                 type="file"
-                id="formFile"
+                id="img"
                 name="img"
                 placeholder="inserisci un'immagine"
-                onerror="this.src='/img/placeholder.jpg'">
+                onchange="showImage(event)">
+
+                <img src="/img/placeholder.jpg" alt="" class="img-thumb my-2"
+                id="thumb">
 
             </div>
 
