@@ -18,7 +18,7 @@
         </div>
     @endif
 
-    <form action="{{route('admin.projects.store')}}" method="POST">
+    <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="container my-3">
@@ -84,6 +84,11 @@
                 @error('technologies')
                     <small class="text-danger">{{$message}}</small>
                 @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Immagine</label>
+                <input class="form-control" type="file" id="formFile">
             </div>
 
             <div class="mb-3">
