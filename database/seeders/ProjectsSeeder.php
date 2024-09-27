@@ -22,6 +22,7 @@ class ProjectsSeeder extends Seeder
             $new_project->title = $faker->sentence(6);
             $new_project->theme = $faker->sentence(3);
             $new_project->company = $faker->sentence(3, true);
+            $new_project->img = 'public/img/placeholder.jpg';
             $new_project->slug = Helper::generateSlug($new_project->title, Project::class);
             $new_project->start_date = $faker->dateTimeBetween('-8 years', '-5 years');
             $new_project->end_date = $faker->dateTimeBetween('-6 years', '-3 years');

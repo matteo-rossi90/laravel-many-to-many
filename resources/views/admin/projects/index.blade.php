@@ -28,7 +28,7 @@
                 <tr>
                     <td>{{$project->id}}</td>
                     <td>
-                        <img class="thumb" src="{{asset('storage/' . $project->image)}}" alt="{{$project->original_name_img}}">
+                        <img class="img-thumb" src="{{asset('storage/' . $project->img)}}" alt="{{$project->original_name_img}}">
                     </td>
                     <td>{{$project->title}}</td>
                     <td>
