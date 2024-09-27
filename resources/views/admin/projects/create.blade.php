@@ -87,8 +87,14 @@
             </div>
 
             <div class="mb-3">
-                <label for="formFile" class="form-label">Immagine</label>
-                <input class="form-control" type="file" id="formFile">
+                <label for="img" class="form-label">Immagine</label>
+                <input class="form-control"
+                type="file"
+                id="formFile"
+                name="img"
+                placeholder="inserisci un'immagine"
+                onerror="this.src='/img/placeholder.jpg'">
+
             </div>
 
             <div class="mb-3">

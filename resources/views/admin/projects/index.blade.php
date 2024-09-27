@@ -16,6 +16,7 @@
         <thead>
             <tr>
                 <th scope="col">#id</th>
+                <th scope="col">Immagine</th>
                 <th scope="col">Titolo</th>
                 <th scope="col">Tipologia</th>
                 <th scope="col">Tecnologia</th>
@@ -26,6 +27,9 @@
             @foreach ($projects as $project)
                 <tr>
                     <td>{{$project->id}}</td>
+                    <td>
+                        <img class="thumb" src="{{asset('storage/' . $project->image)}}" alt="{{$project->original_name_img}}">
+                    </td>
                     <td>{{$project->title}}</td>
                     <td>
                         <span class="badge text-bg-info">

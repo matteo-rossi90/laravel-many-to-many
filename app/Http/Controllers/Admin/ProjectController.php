@@ -9,6 +9,7 @@ use App\Functions\Helper;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Technology;
 use App\Models\Type;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -44,6 +45,18 @@ class ProjectController extends Controller
         $data['slug'] = Helper::generateSlug($data['title'], Project::class);
 
         $project = Project::create($data);
+
+        //verificare se nei data sia presente la chiave img
+        if (array_key_exists('img', $data)) {
+
+            //se esiste salvare la chiave nello storage
+            $img = Storage::put('uploads', $data['img']);
+
+            $original_name = $request->file('img')->getClientOriginalName();
+
+            $data['img'] = $img;
+            $data['original_name_img'] = $original_name;
+        }
 
         //verificare se nei data sia presente la chiave technologies necessaria per selezionare le tecnologie nel checkbox
         if (array_key_exists('technologies', $data)) {

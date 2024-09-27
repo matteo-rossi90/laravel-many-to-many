@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('theme', 100);
             $table->string('company', 100);
             $table->string('slug', 100);
+            $table->string('img')->nullable();
+            $table->string('original_name_img')->nullable();
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->text('description')->nullable();

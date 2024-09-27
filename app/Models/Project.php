@@ -16,6 +16,8 @@ class Project extends Model
         'slug',
         'theme',
         'company',
+        'img',
+        'original_name_img',
         'start_date',
         'end_date',
         'description'
