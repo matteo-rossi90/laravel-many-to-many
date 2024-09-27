@@ -98,6 +98,10 @@
                 <img src="/img/placeholder.jpg" alt="" class="img-thumb my-2"
                 id="thumb">
 
+                @error('img')
+                    <small class="text-danger">{{$message}}</small>
+                @enderror
+
             </div>
 
             <div class="mb-3">

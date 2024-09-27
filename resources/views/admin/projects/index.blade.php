@@ -4,7 +4,7 @@
 
 <div class="container my-3">
 
-    <h2>I miei progetti</h2>
+    <h2 class="my-3">I miei progetti</h2>
 
     @if (session('delete'))
         <div class="alert alert-success">

@@ -28,7 +28,8 @@ class ProjectRequest extends FormRequest
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'type_id' => 'required',
-            'technologies' => 'required'
+            'technologies' => 'required',
+            'img' => 'image|mimes:png,jpg,jpeg|max:5120'
         ];
 
     }
@@ -49,7 +50,10 @@ class ProjectRequest extends FormRequest
             'end_date.date' => 'La data di fine deve essere una data valida',
             'end_date.after_or_equal' => 'La data di fine non può essere precedente alla data di inizio',
             'type_id' => 'La tipologia è obbligatoria',
-            'technologies.required' => 'Le tecnologie scelte sono obbligatorie'
+            'technologies.required' => 'Le tecnologie scelte sono obbligatorie',
+            'img.image' => 'L\'immagine selezionata non è valida',
+            'img.mimes' => 'L\'immagine selezionata non è nel formato corretto. Inserire immgini con estensioni png, jpg o jpeg',
+            'img.max' => 'L\'immagine selezionata non può superare i :max kilobytes'
         ];
     }
 }

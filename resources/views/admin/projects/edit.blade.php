@@ -99,6 +99,10 @@
                 <img id="thumb" class="img-thumb my-2" src="{{asset('storage/' . $project->img)}}" alt="{{$project->original_name_img}}"
                 onerror="this.src='/img/placeholder.jpg'">
 
+                @error('img')
+                    <small class="text-danger">{{$message}}</small>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <label for="start_date" class="form-label">Data di inizio</label>
