@@ -17,7 +17,7 @@
 
     @endif
 
-    <form action="{{route('admin.projects.update', $project)}}" method="POST">
+    <form action="{{route('admin.projects.update', $project)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -87,6 +87,19 @@
                 @enderror
             </div>
 
+            <div class="mb-3">
+                <label for="img" class="form-label">Immagine</label>
+                <input class="form-control"
+                type="file"
+                id="img"
+                name="img"
+                placeholder="inserisci un'immagine"
+                onchange="showImage(event)">
+
+                <img id="thumb" class="img-thumb my-2" src="{{asset('storage/' . $project->img)}}" alt="{{$project->original_name_img}}"
+                onerror="this.src='/img/placeholder.jpg'">
+
+            </div>
             <div class="mb-3">
                 <label for="start_date" class="form-label">Data di inizio</label>
                 <input type="date" class="form-control @error('start_date') is-invalid @enderror" id="start_date" name="start_date" value="{{old('start_date', $project->start_date ? $project->start_date->format('Y-m-d') : '')}}">

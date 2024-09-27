@@ -19,7 +19,7 @@ class ProjectsSeeder extends Seeder
         for ($i = 0; $i < 20; $i++) {
             $new_project = new Project();
             $new_project->type_id = Type::inRandomOrder()->first()->id;
-            $new_project->title = $faker->sentence(6);
+            $new_project->title = $faker->sentence(3);
             $new_project->theme = $faker->sentence(3);
             $new_project->company = $faker->sentence(3, true);
             $new_project->slug = Helper::generateSlug($new_project->title, Project::class);

@@ -105,6 +105,15 @@ class ProjectController extends Controller
             $data['slug'] = Helper::generateSlug($data['title'], Project::class);
         }
 
+        //verificare se nei data sia presente la chiave img
+        if (array_key_exists('img', $data)) {
+            //se esiste salvare la chiave nello storage
+            $image = Storage::put('uploads', $data['img']);
+            $original_name = $request->file('img')->getClientOriginalName();
+            $data['img'] = $image;
+            $data['original_name_img'] = $original_name;
+        }
+
         $project->update($data);
 
         //se la tecnologia scelta è stata inviata, si aggiornano le relazioni con sync()
@@ -124,11 +133,14 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
 
     {
-        $projects = Project::find($id);
-        $projects->delete();
+        if($project->img){
+            Storage::delete($project->img);
+        }
+
+        $project->delete();
 
         return redirect()->route('admin.projects.index')->with('delete', 'Il progetto è stato eliminato correttamente');
     }

@@ -16,18 +16,18 @@ class TypesSeeder extends Seeder
     {
         $data = [
             "Sito Web Statico",
-            "Single Page Application (SPA)",
+            "Single Page Application",
             "RESTful API",
             "E-commerce",
-            "Blog/CMS (Content Management System)",
+            "Blog/CMS",
             "Forum/Community",
             "Dashboard Analitico",
             "Sistema di Autenticazione",
             "Microservizi",
             "Real-time Applications",
-            "Progressive Web App (PWA)",
+            "Web App",
             "Social Media Integration",
-            "Server-Side Rendering (SSR)",
+            "Server-Side Rendering",
             "Testing e CI/CD",
             "Progetto Open Source"
         ];
