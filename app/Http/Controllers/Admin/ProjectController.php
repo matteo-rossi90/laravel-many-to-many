@@ -18,17 +18,44 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBy('id', 'desc')->paginate(10);
+        //verificare se è presente direction e se è presente ed è impostata su un ordine ascendente,
+        //dovrà essere discendente, altrimenti continuerà ad essere ascendente
+        if (isset($_GET['direction'])) {
+            $direction = $_GET['direction'] === 'asc' ? 'desc' : 'asc';
+        } else {
+            //in caso contrario direction sarà sempre ascendente
+            $direction = 'asc';
+        }
 
+        //verificare se column esiste e se la condizione è vera i progetti devono essere ordinati nel modo opposto a
+        //come si presentano di default
+        if(isset($_GET['column'])){
+            $column = $_GET['column'];
+
+            if($column === 'title' || $column === 'id'){
+                $projects = Project::orderBy($column, $direction)->paginate(10);
+            }elseif($column === 'type_id'){
+                $projects = Project::join('types', 'projects.type_id', '=', 'types.id')
+                                    ->orderBy($column, $direction)->paginate(10);
+            }
+        } else {
+            //altrimenti i progetti si presenteranno nel modo preimpostato
+            $projects = Project::orderBy('id', 'desc')->paginate(10);
+        }
+
+        //verificare se la barra di ricerca riceva correttamente l'elemento inserito
         if (isset($_GET['search'])) {
             $search = $_GET['search'];
+
+            //se l'elemento è stato inserito correttamente, confrontarlo con la query
             $projects = Project::where('title', 'LIKE', '%' . $search . '%')
                 ->orderBy('id', 'asc')->paginate(10);
 
             $projects->append(request()->query());
+            return view('admin.projects.index', compact('projects', 'direction'));
         }
 
-        return view('admin.projects.index', compact('projects'));
+        return view('admin.projects.index', compact('projects', 'direction'));
 
     }
 
