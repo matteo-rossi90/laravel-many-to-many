@@ -4,7 +4,20 @@
 
 <div class="container my-3">
 
-    <h2 class="my-3">I miei progetti</h2>
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2 class="my-3">I miei progetti</h2>
+        <form action="{{route('admin.projects.index')}}" class="d-flex" onsubmit="return validateSearch()">
+            <div class="btn-group">
+                <input type="search" name="search" class="form-control" id="validate">
+                <button type="submit" class="btn btn-outline-primary">
+                    Cerca
+                </button>
+                <a href="{{route('admin.projects.index')}}" class="btn btn-outline-danger">
+                    Annulla
+                </a>
+            </div>
+        </form>
+    </div>
 
     @if (session('delete'))
         <div class="alert alert-success">
@@ -12,7 +25,8 @@
         </div>
     @endif
 
-        <table class="table">
+    @if($projects->count() > 0)
+    <table class="table">
         <thead>
             <tr>
                 <th scope="col">#id</th>
@@ -66,11 +80,13 @@
                 </tr>
             @endforeach
         </tbody>
-        </table>
-        <div class="d-flex justify-content-center">
-            {{$projects->links()}}
-        </div>
-
+    </table>
+    <div class="d-flex justify-content-center">
+        {{$projects->links()}}
+    </div>
+    @else
+        <p>La ricerca non ha prodotto alcun risultato</p>
+    @endif
 </div>
 
 @endsection
